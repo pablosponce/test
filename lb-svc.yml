@@ -1,0 +1,32 @@
+---
+apiVersion: "v1"
+kind: "Service"
+metadata:
+  annotations:
+    kubectl.kubernetes.io/last-applied-configuration: "{\"apiVersion\":\"v1\",\"kind\"\
+      :\"Service\",\"metadata\":{\"annotations\":{},\"name\":\"lb-svc\",\"namespace\"\
+      :\"default\"},\"spec\":{\"ports\":[{\"port\":80,\"protocol\":\"TCP\",\"targetPort\"\
+      :6969}],\"selector\":{\"app\":\"myapp\"},\"type\":\"LoadBalancer\"}}\n"
+  finalizers: []
+  name: "lb-svc"
+  namespace: "default"
+  ownerReferences: []
+spec:
+  clusterIP: "10.64.12.48"
+  externalIPs: []
+  externalTrafficPolicy: "Cluster"
+  loadBalancerSourceRanges: []
+  ports:
+  - nodePort: 32263
+    port: 80
+    protocol: "TCP"
+    targetPort: 6969
+  selector:
+    app: "myapp"
+  sessionAffinity: "None"
+  type: "LoadBalancer"
+status:
+  loadBalancer:
+    ingress:
+    - ip: "35.240.101.40"
+
