@@ -1,0 +1,8 @@
+steps:
+  - name: "gcr.io/cloud-builders/go"
+    args: ["install", "github.com/pablosponce/test"]
+    env: ["PROJECT_ROOT=github.com/pablosponce/test"]
+  - name: "gcr.io/cloud-builders/docker"
+    args: ["build", "-t", "gcr.io/melodic-grail-261404/test:$REVISION_ID", "-f", "Dockerfile", "."]
+images:
+  - "gcr.io/{melodic-grail-261404}/test:$REVISION_ID"
