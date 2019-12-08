@@ -1,0 +1,76 @@
+---
+apiVersion: "extensions/v1beta1"
+kind: "ReplicaSet"
+metadata:
+  finalizers: []
+  labels:
+    app: "myapp"
+    cluster: "myapp-prod"
+    load-balancer-lb-svc: "true"
+    myapp-prod-v002: "true"
+    replication-controller: "myapp-prod-v002"
+    stack: "prod"
+    version: "2"
+  name: "myapp-prod-v002"
+  namespace: "default"
+  ownerReferences: []
+spec:
+  replicas: 1
+  selector:
+    matchExpressions: []
+    matchLabels:
+      app: "myapp"
+      cluster: "myapp-prod"
+      myapp-prod-v002: "true"
+      replication-controller: "myapp-prod-v002"
+      stack: "prod"
+      version: "2"
+  template:
+    metadata:
+      finalizers: []
+      labels:
+        app: "myapp"
+        cluster: "myapp-prod"
+        load-balancer-lb-svc: "true"
+        myapp-prod-v002: "true"
+        replication-controller: "myapp-prod-v002"
+        stack: "prod"
+        version: "2"
+      ownerReferences: []
+    spec:
+      containers:
+      - args: []
+        command: []
+        env: []
+        envFrom: []
+        image: "index.docker.io/library/nginx:1-alpine-perl"
+        imagePullPolicy: "IfNotPresent"
+        name: "library-nginx"
+        ports:
+        - containerPort: 80
+          name: "http"
+          protocol: "TCP"
+        resources: {}
+        terminationMessagePath: "/dev/termination-log"
+        terminationMessagePolicy: "File"
+        volumeMounts: []
+      dnsPolicy: "ClusterFirst"
+      hostAliases: []
+      imagePullSecrets:
+      - name: "my-docker-registry"
+      initContainers: []
+      restartPolicy: "Always"
+      schedulerName: "default-scheduler"
+      securityContext:
+        supplementalGroups: []
+      terminationGracePeriodSeconds: 30
+      tolerations: []
+      volumes: []
+status:
+  availableReplicas: 1
+  conditions: []
+  fullyLabeledReplicas: 1
+  observedGeneration: 1
+  readyReplicas: 1
+  replicas: 1
+
