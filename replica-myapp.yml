@@ -15,7 +15,7 @@ metadata:
   namespace: "default"
   ownerReferences: []
 spec:
-  replicas: 1
+  replicas: 3
   selector:
     matchExpressions: []
     matchLabels:
