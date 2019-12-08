@@ -1,0 +1,26 @@
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      tier: MyApp
+  template:
+    metadata:
+      annotations:
+        artifact.spinnaker.io/location: default
+        artifact.spinnaker.io/name: MyApp
+        artifact.spinnaker.io/type: kubernetes/replicaSet
+        artifact.spinnaker.io/version: v000
+        moniker.spinnaker.io/application: MyApp
+        moniker.spinnaker.io/cluster: replicaSet MyApp
+        moniker.spinnaker.io/sequence: '0'
+      labels:
+        app: MyApp
+        app.kubernetes.io/name: MyApp
+        tier: MyApp
+    spec:
+      containers:
+        - image: 'gcr.io/spinnaker-marketplace/helloworld:v1'
+          imagePullPolicy: IfNotPresent
+          name: MyApp
+          ports:
+            - containerPort: 6969
